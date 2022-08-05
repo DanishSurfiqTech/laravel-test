@@ -16,8 +16,12 @@ class CreateFileColumnsTable extends Migration
         Schema::create('file_columns', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('file_id');
-            $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
-            $table->string('name');
+            $table
+                ->foreign('file_id')
+                ->references('id')
+                ->on('files')
+                ->onDelete('cascade');
+            $table->string('column_name');
             $table->timestamps();
         });
     }
