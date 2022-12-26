@@ -15,11 +15,9 @@ class UserImport implements ToCollection
      */
     public function collection(Collection $collection)
     {
-        File::create([
-            'file_name' => 'user',
-        ]);
-        $file_id = File::latest()->first();
+        // dd($collection);
 
+        $file_id = File::latest()->first();
         for ($i = 0; $i < count($collection[0]); $i++) {
             FileColumn::create([
                 'file_id' => $file_id->id,
@@ -30,6 +28,7 @@ class UserImport implements ToCollection
         for ($i = 1; $i < count($collection); $i++) {
             for ($j = 0; $j < count($collection[0]); $j++) {
                 FileData::create([
+                    'file_id' => $file_id->id,
                     'column_id' => $column_id[$j]->id,
                     'data' => $collection[$i][$j],
                 ]);

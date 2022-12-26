@@ -14,7 +14,6 @@ use App\Http\Controllers\ImportController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ImportController::class, 'index'])->name('/');
+Route::get('/data/{id}', [ImportController::class, 'export'])->name('export');
 Route::post('/import', [ImportController::class, 'import'])->name('import');

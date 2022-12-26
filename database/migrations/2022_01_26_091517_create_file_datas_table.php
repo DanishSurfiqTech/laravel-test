@@ -16,6 +16,7 @@ class CreateFileDatasTable extends Migration
         Schema::create('file_datas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('column_id');
+            $table->unsignedBigInteger('file_id');
             $table
                 ->foreign('column_id')
                 ->references('id')

@@ -10,11 +10,9 @@ class FileColumn extends Model
 {
     use Notifiable, HasFactory;
 
-    public $fillable = [
-        'file_id', 'column_name'
-    ];
-
     protected $table = 'file_columns';
+
+    public $fillable = ['file_id', 'column_id', 'column_name'];
 
     public function file()
     {
